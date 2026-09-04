@@ -32,6 +32,8 @@
 - 2026-09-03 issue #5442 — dropped. Claimed by open upstream PR #5463 (unmerged); never re-implement here (would duplicate a live third-party fix).
 - 2026-09-03 issue #4994 — dropped for THIS run. Confirmed, maintainer-engaged regression, but staging a Rust fix unverifiable on this build-less runner violates the evidence rule (no C toolchain / no system openssl headers / no root to install; any host crate build transitively pulls zellij-utils -> isahc -> curl-sys). Reconsider on a build-capable run.
 
+- 2026-09-04 trivial-fix pass — pr-opened. Packed 6 genuine meaning-preserving trivial fixes across 5 files (docs/RELEASE.md x2 typos, docs/TERMINOLOGY.md typo, .github/ISSUE_TEMPLATE/plugin_API.md typo, default-plugins/layout-manager/README.md stale wasm32-wasi->wasm32-wasip1 x2, CONTRIBUTING.md removed stale 'Testing plugins' singlepass/wasmtime section). PR https://github.com/olitreadwell/zellij/pull/2 (fork, non-draft). Supersedes the 2026-09-03 'no genuine trivial finding' audit — that audit checked commands/links/CI but missed doc typos, the stale wasm32-wasi target, and the stale singlepass section.
+
 ## Mined gaps
 - 2026-09-03 docs/clean-code/CI audit — no genuine, uncontested, verifiable NON-code finding:
   - README/CONTRIBUTING.md/docs commands cross-checked against xtask flags (RELEASE.md `cargo x publish --git-remote/--cargo-registry`; CONTRIBUTING `cargo xtask ci e2e --build/--test`, `cargo x proto`) — all exist and match.
@@ -40,3 +42,4 @@
   - Upstream already merged a comment-typo PR (#5562) — typo vein is fresh; re-doing it would be a duplicate. CONTRIBUTING disfavors trivial.
 - 2026-09-03 build note — local Rust verification is infeasible on this runner (no `cc`/`gcc`/`clang`, no root for gcc/openssl-dev). Any future code pick here needs a build-capable runner.
 - 2026-09-03 future candidate — #4994 (confirmed `--layout` non-`.kdl` regression) is the highest-value unclaimed pick when a build-capable run next handles zellij.
+- 2026-09-04 trivial-fix pass — found + fixed 6 genuine trivial errors (see gap ledger). The 2026-09-03 'no genuine trivial finding' audit was incomplete: it verified commands/links/CI but missed doc typos, the stale wasm32-wasi target in layout-manager README, and the stale singlepass/wasmtime section in CONTRIBUTING.md.
