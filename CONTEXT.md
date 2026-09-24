@@ -1,5 +1,5 @@
 # zellij-org/zellij context
-> refreshed 2026-09-03 | upstream default: main @ af38660c5884f50bb3726682fb92961326c4268f
+> refreshed 2026-09-25 | upstream default: main @ 3e470a43dcdbe548d91429bf63d6a9488efdd7c5
 
 ## Identity & policies
 - upstream: zellij-org/zellij, default branch main, primary language Rust, English-first (yes)
@@ -29,6 +29,8 @@
 - #5442 (this cycle's scoped candidate) — CLAIMED: open upstream PR #5463 (fzlzjerry, "fix(link): preserve pane cwd when opening detected files", open since 2026-08-10, unmerged).
 
 ## Gap ledger (dedupe — READ FIRST, never re-pick)
+- 2026-09-25 issue #4994 — pr-opened. Scheduled by engine/loop.sh. Confirmed regression was STILL PRESENT on current upstream main @3e470a43 (fork main in sync): `--layout <path with non-.kdl ext>` silently ignored when starting a new session. Root cause verified + unit-reproduced: `Layout::from_layout_info(_with_config)` routed a resolved `LayoutInfo::File` path through `stringified_from_dir`, which forced the extension to `.kdl` and fell back to the default layout when that file did not exist. Fix: resolve a File layout info to its path directly when it looks like a real path (extension or separator), keep the dir lookup for bare layout names. Regression test `file_layout_with_non_kdl_extension_loads_from_path` FAILED on origin code ('The layout was not found'), PASSES with fix; full `cargo test -p zellij-utils --lib` green (525 tests); rustfmt clean. Branch `fix/non-kdl-layout-loading` off fork main, commit 3bcfb5a5f, PR https://github.com/olitreadwell/zellij/pull/9 (fork, non-draft, base=fork main, MERGEABLE clean). No AI in body/commits; repo CONTRIBUTING has an 'LLM Generated Issues/PR Descriptions' section (avoid wordy LLM text) — not a ban/disclosure gate, body kept concise. Fork Actions not producing PR check runs (fork artifact, same as prior runs); Rust workflow manually dispatched for verification.
+
 - 2026-09-03 issue #5442 — dropped. Claimed by open upstream PR #5463 (unmerged); never re-implement here (would duplicate a live third-party fix).
 - 2026-09-03 issue #4994 — dropped for THIS run. Confirmed, maintainer-engaged regression, but staging a Rust fix unverifiable on this build-less runner violates the evidence rule (no C toolchain / no system openssl headers / no root to install; any host crate build transitively pulls zellij-utils -> isahc -> curl-sys). Reconsider on a build-capable run.
 
@@ -43,6 +45,6 @@
   - CI workflows — build/test/integration/test-no-web/assets/format all present; nothing substantive missing.
   - Upstream already merged a comment-typo PR (#5562) — typo vein is fresh; re-doing it would be a duplicate. CONTRIBUTING disfavors trivial.
 - 2026-09-03 build note — local Rust verification is infeasible on this runner (no `cc`/`gcc`/`clang`, no root for gcc/openssl-dev). Any future code pick here needs a build-capable runner.
-- 2026-09-03 future candidate — #4994 (confirmed `--layout` non-`.kdl` regression) is the highest-value unclaimed pick when a build-capable run next handles zellij.
+- 2026-09-03 future candidate — #4994 (confirmed `--layout` non-`.kdl` regression) — attempted 2026-09-25, pr-opened (see gap ledger).
 - 2026-09-04 trivial-fix pass — found + fixed 6 genuine trivial errors (see gap ledger). The 2026-09-03 'no genuine trivial finding' audit was incomplete: it verified commands/links/CI but missed doc typos, the stale wasm32-wasi target in layout-manager README, and the stale singlepass/wasmtime section in CONTRIBUTING.md.
 - 2026-09-09 trivial-fix pass — found + fixed 21 genuine typos (see gap ledger). codespell (2.4.3) surfaced them; false positives excluded (proper names Rady/aks, dialect variants cancelled/behaviour, vendored termwiz, test fixtures, binary assets). The 2026-09-03 'no genuine trivial finding' audit was again incomplete: it verified commands/links/CI but missed code-comment + changelog typos. Remaining known candidates for a future pass: test-file typos (tab_integration_tests.rs ovewritten/scren) and vendored termwiz mod.rs 'Thid' (vendored, skip).
