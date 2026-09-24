@@ -2576,3 +2576,52 @@ fn tiled_pane_still_rejects_zero_percent() {
     let result = SplitSize::from_str("1%");
     assert!(result.is_ok());
 }
+
+#[test]
+fn file_layout_with_non_kdl_extension_loads_from_path() {
+    use crate::data::{LayoutInfo, LayoutMetadata};
+
+    // Regression test for https://github.com/zellij-org/zellij/issues/4994
+    // `--layout path/to/layout.zellij` (any non-.kdl extension) was silently
+    // ignored when starting a session: the path was routed through the layout
+    // directory lookup, which forced the extension to `.kdl` and fell back to
+    // the default layout when that file did not exist. A resolved file path must
+    // be loaded as-is.
+    let tmp_dir = std::env::temp_dir().join(format!("zellij-layout-ext-{}", std::process::id()));
+    std::fs::create_dir_all(&tmp_dir).unwrap();
+    let layout_file = tmp_dir.join("my.layout");
+    std::fs::write(&layout_file, "layout {\n    pane command=\"pwd\"\n}\n").unwrap();
+
+    let layout_info = LayoutInfo::File(
+        layout_file.display().to_string(),
+        LayoutMetadata::from(&layout_file),
+    );
+    let (layout, _config) =
+        Layout::from_layout_info_with_config(&Some(tmp_dir.clone()), &layout_info, None).unwrap();
+    let pane_count = layout.template.unwrap().0.children.len();
+
+    std::fs::remove_dir_all(&tmp_dir).ok();
+
+    assert_eq!(pane_count, 1);
+}
+
+#[test]
+fn bare_layout_name_in_layout_dir_still_loads() {
+    use crate::data::{LayoutInfo, LayoutMetadata};
+
+    // A bare layout name (from the layout-switcher list) must keep resolving via
+    // the layout directory even after the file-path fix above.
+    let tmp_dir = std::env::temp_dir().join(format!("zellij-layout-bare-{}", std::process::id()));
+    std::fs::create_dir_all(&tmp_dir).unwrap();
+    let layout_file = tmp_dir.join("compact.kdl");
+    std::fs::write(&layout_file, "layout {\n    pane command=\"pwd\"\n}\n").unwrap();
+
+    let layout_info = LayoutInfo::File("compact".to_string(), LayoutMetadata::from(&layout_file));
+    let (layout, _config) =
+        Layout::from_layout_info_with_config(&Some(tmp_dir.clone()), &layout_info, None).unwrap();
+    let pane_count = layout.template.unwrap().0.children.len();
+
+    std::fs::remove_dir_all(&tmp_dir).ok();
+
+    assert_eq!(pane_count, 1);
+}
