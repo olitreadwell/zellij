@@ -1332,18 +1332,34 @@ impl Layout {
         });
         (available_layouts, layouts_with_errors)
     }
+    fn stringified_from_layout_info_file(
+        file_or_name: &PathBuf,
+        layout_dir: &Option<PathBuf>,
+    ) -> Result<(String, String, Option<(String, String)>), ConfigError> {
+        // A `LayoutInfo::File` is either the fully-resolved path to a layout file
+        // (from the CLI or config) or a bare layout name (from the layout-switcher
+        // list). Mirror the "local vs. bare name" detection used elsewhere in this
+        // file: a path that has an extension or a path separator is loaded directly,
+        // while a bare name is looked up in the layout directory (with `.kdl`
+        // appended when needed).
+        if file_or_name.extension().is_some() || file_or_name.components().count() > 1 {
+            Self::stringified_from_path(file_or_name)
+        } else {
+            let layout_dir = layout_dir.clone().or_else(|| default_layout_dir());
+            Self::stringified_from_dir(file_or_name, layout_dir.as_ref())
+        }
+    }
     pub fn from_layout_info(
         layout_dir: &Option<PathBuf>,
         layout_info: LayoutInfo,
     ) -> Result<Layout, ConfigError> {
         let mut should_start_layout_commands_suspended = false;
         let (path_to_raw_layout, raw_layout, raw_swap_layouts) = match layout_info {
-            LayoutInfo::File(layout_name_without_extension, _layout_metadata) => {
-                let layout_dir = layout_dir.clone().or_else(|| default_layout_dir());
+            LayoutInfo::File(file_or_name, _layout_metadata) => {
                 let (path_to_layout, stringified_layout, swap_layouts) =
-                    Self::stringified_from_dir(
-                        &PathBuf::from(layout_name_without_extension),
-                        layout_dir.as_ref(),
+                    Self::stringified_from_layout_info_file(
+                        &PathBuf::from(file_or_name),
+                        layout_dir,
                     )?;
                 (Some(path_to_layout), stringified_layout, swap_layouts)
             },
@@ -1381,12 +1397,11 @@ impl Layout {
     ) -> Result<(Layout, Config), ConfigError> {
         let mut should_start_layout_commands_suspended = false;
         let (path_to_raw_layout, raw_layout, raw_swap_layouts) = match layout_info {
-            LayoutInfo::File(layout_name_without_extension, _layout_metadata) => {
-                let layout_dir = layout_dir.clone().or_else(|| default_layout_dir());
+            LayoutInfo::File(file_or_name, _layout_metadata) => {
                 let (path_to_layout, stringified_layout, swap_layouts) =
-                    Self::stringified_from_dir(
-                        &PathBuf::from(layout_name_without_extension),
-                        layout_dir.as_ref(),
+                    Self::stringified_from_layout_info_file(
+                        &PathBuf::from(file_or_name),
+                        layout_dir,
                     )?;
                 (Some(path_to_layout), stringified_layout, swap_layouts)
             },
