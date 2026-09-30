@@ -1,5 +1,5 @@
 # zellij-org/zellij context
-> refreshed 2026-09-25 | upstream default: main @ 3e470a43dcdbe548d91429bf63d6a9488efdd7c5
+> refreshed 2026-09-30 | upstream default: main @ a79e15e178cd30b77b057db59ef0f05f2318c9f9
 
 ## Identity & policies
 - upstream: zellij-org/zellij, default branch main, primary language Rust, English-first (yes)
@@ -48,3 +48,4 @@
 - 2026-09-03 future candidate — #4994 (confirmed `--layout` non-`.kdl` regression) — attempted 2026-09-25, pr-opened (see gap ledger).
 - 2026-09-04 trivial-fix pass — found + fixed 6 genuine trivial errors (see gap ledger). The 2026-09-03 'no genuine trivial finding' audit was incomplete: it verified commands/links/CI but missed doc typos, the stale wasm32-wasi target in layout-manager README, and the stale singlepass/wasmtime section in CONTRIBUTING.md.
 - 2026-09-09 trivial-fix pass — found + fixed 21 genuine typos (see gap ledger). codespell (2.4.3) surfaced them; false positives excluded (proper names Rady/aks, dialect variants cancelled/behaviour, vendored termwiz, test fixtures, binary assets). The 2026-09-03 'no genuine trivial finding' audit was again incomplete: it verified commands/links/CI but missed code-comment + changelog typos. Remaining known candidates for a future pass: test-file typos (tab_integration_tests.rs ovewritten/scren) and vendored termwiz mod.rs 'Thid' (vendored, skip).
+- 2026-09-30 trivial-fix pass (scheduled, loop-trivial) — refreshed context to upstream main @ a79e15e17. Candidates verified live: errors.rs `Convenienve`x3 + `MSPC`->`MPSC`, session_serialization.rs `togethyer`, src/commands.rs `refctor`, tiled_pane_grid.rs `Could nto`x4, tab_integration_tests.rs `scren`, plugin_tests.rs `tha thte`x2 + `tha the`, CONTRIBUTING.md stale log-cap line (100KB vs actual 16 MiB, permalink off-by-one #L24->#L23) + stale `master branch`->`main`. DEDUPE: dropped `cli.rs` `forwrads` — it is claimed by an OPEN upstream PR #4732 ("Fix typos", jeffs, open since 2026-02-19, unmerged); re-doing it would duplicate live work. #4732 does not touch any other candidate string (diff grep: only 1 `forwrads` hit).
