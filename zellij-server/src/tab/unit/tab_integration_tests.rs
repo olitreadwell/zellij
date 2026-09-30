@@ -5270,7 +5270,7 @@ fn pane_faux_scrolling_in_alternate_mode() {
     let enable_alternate_screen = String::from("\u{1b}[?1049h"); // CSI ? 1049 h -> switch to the Alternate Screen Buffer
     let set_application_mode = String::from("\u{1b}[?1h");
 
-    // no output since alternate scren not active yet
+    // no output since alternate screen not active yet
     tab.handle_scrollwheel_up(&Position::new(1, 1), lines_to_scroll, client_id)
         .unwrap();
     tab.handle_scrollwheel_down(&Position::new(1, 1), lines_to_scroll, client_id)
