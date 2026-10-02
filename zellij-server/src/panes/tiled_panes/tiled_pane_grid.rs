@@ -1636,7 +1636,7 @@ impl<'a> TiledPaneGrid<'a> {
         // here we look for panes that are directly above the provided root pane but that do not
         // exceed its vertical borders (x and x + cols)
         let Some(root_pane_geom) = self.get_pane_geom(root_pane_id) else {
-            log::error!("Could nto find root pane geom");
+            log::error!("Could not find root pane geom");
             return vec![];
         };
         let Some(neighbor_pane_ids) = self.neighbor_pane_ids(root_pane_id, Direction::Up).ok()
@@ -2067,7 +2067,7 @@ impl<'a> TiledPaneGrid<'a> {
         // here we look for panes that are directly below the provided root pane but that do not
         // exceed its vertical borders (x and x + cols)
         let Some(root_pane_geom) = self.get_pane_geom(root_pane_id) else {
-            log::error!("Could nto find root pane geom");
+            log::error!("Could not find root pane geom");
             return vec![];
         };
         let Some(neighbor_pane_ids) = self.neighbor_pane_ids(root_pane_id, Direction::Down).ok()
@@ -2129,7 +2129,7 @@ impl<'a> TiledPaneGrid<'a> {
         // here we look for panes that are directly to the left the provided root pane but that do not
         // exceed its horizontal borders (y and y + rows)
         let Some(root_pane_geom) = self.get_pane_geom(root_pane_id) else {
-            log::error!("Could nto find root pane geom");
+            log::error!("Could not find root pane geom");
             return vec![];
         };
         let Some(neighbor_pane_ids) = self.neighbor_pane_ids(root_pane_id, Direction::Left).ok()
@@ -2192,7 +2192,7 @@ impl<'a> TiledPaneGrid<'a> {
         // here we look for panes that are directly to the right the provided root pane but that do not
         // exceed its horizontal borders (y and y + rows)
         let Some(root_pane_geom) = self.get_pane_geom(root_pane_id) else {
-            log::error!("Could nto find root pane geom");
+            log::error!("Could not find root pane geom");
             return vec![];
         };
         let Some(neighbor_pane_ids) = self.neighbor_pane_ids(root_pane_id, Direction::Right).ok()
