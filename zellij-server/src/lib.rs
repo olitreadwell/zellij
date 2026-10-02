@@ -1253,7 +1253,7 @@ pub fn start_server_impl(
                     };
                 // if we successfully wrote the config to disk, it means two things:
                 // 1. It did not exist beforehand
-                // 2. The config folder is writeable
+                // 2. The config folder is writable
                 //
                 // If these two are true, we should launch the setup wizard, if even one of them is
                 // false, we should never launch it.
