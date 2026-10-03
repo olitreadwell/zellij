@@ -237,8 +237,8 @@ impl fmt::Display for BareKey {
             BareKey::Tab => write!(f, "TAB"),
             BareKey::Esc => write!(f, "ESC"),
             BareKey::Enter => write!(f, "ENTER"),
-            BareKey::CapsLock => write!(f, "CAPSlOCK"),
-            BareKey::ScrollLock => write!(f, "SCROLLlOCK"),
+            BareKey::CapsLock => write!(f, "CAPSLOCK"),
+            BareKey::ScrollLock => write!(f, "SCROLLLOCK"),
             BareKey::NumLock => write!(f, "NUMLOCK"),
             BareKey::PrintScreen => write!(f, "PRINTSCREEN"),
             BareKey::Pause => write!(f, "PAUSE"),
@@ -3398,7 +3398,7 @@ pub enum HttpVerb {
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub enum PipeSource {
     Cli(String), // String is the pipe_id of the CLI pipe (used for blocking/unblocking)
-    Plugin(u32), // u32 is the lugin id
+    Plugin(u32), // u32 is the plugin id
     Keybind,     // TODO: consider including the actual keybind here?
 }
 

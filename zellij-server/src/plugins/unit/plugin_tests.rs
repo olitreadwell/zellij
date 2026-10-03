@@ -686,7 +686,7 @@ lazy_static! {
 #[ignore]
 pub fn load_new_plugin_from_hd() {
     // here we load our fixture plugin into the plugin thread, and then send it an update message
-    // expecting tha thte plugin will log the received event and render it later after the update
+    // expecting that the plugin will log the received event and render it later after the update
     // message (this is what the fixture plugin does)
     // we then listen on our mock screen receiver to make sure we got a PluginBytes instruction
     // that contains said render, and assert against it
@@ -771,7 +771,7 @@ pub fn load_new_plugin_from_hd() {
 #[ignore]
 pub fn load_new_plugin_with_plugin_alias() {
     // here we load our fixture plugin into the plugin thread, and then send it an update message
-    // expecting tha thte plugin will log the received event and render it later after the update
+    // expecting that the plugin will log the received event and render it later after the update
     // message (this is what the fixture plugin does)
     // we then listen on our mock screen receiver to make sure we got a PluginBytes instruction
     // that contains said render, and assert against it
@@ -7489,7 +7489,7 @@ pub fn run_plugin_in_specific_cwd() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('8'))), // this sends this quit command so tha the test exits cleanly
+        Event::Key(KeyWithModifier::new(BareKey::Char('8'))), // this sends this quit command so that the test exits cleanly
     )]));
     teardown();
     server_thread.join().unwrap(); // this might take a while if the cache is cold
