@@ -991,8 +991,8 @@ fn get_splits(geoms: &Vec<PaneLayoutManifest>) -> Option<(SplitDirection, Vec<us
     }
 }
 
-/// Returns a vector containing the abscisse (x) of the cols that split the
-/// domain including the boundaries, ie the min and max abscisse values.
+/// Returns a vector containing the abscissa (x) of the cols that split the
+/// domain including the boundaries, ie the min and max abscissa values.
 fn get_col_splits(
     geoms: &Vec<PaneLayoutManifest>,
     (_, x_max): &(usize, usize),

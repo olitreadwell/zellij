@@ -18,7 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 * fix: group bar-plugins on viewport edge for layout purposes (https://github.com/zellij-org/zellij/pull/5653)
 * fix: resize state and correctness (https://github.com/zellij-org/zellij/pull/5656)
 * fix: compress kitty images if the host terminal supports it (https://github.com/zellij-org/zellij/pull/5608)
-* fix: add websocket heartbeat to webserver to prevernt idle disconnect through proxies (https://github.com/zellij-org/zellij/pull/4633)
+* fix: add websocket heartbeat to webserver to prevent idle disconnect through proxies (https://github.com/zellij-org/zellij/pull/4633)
 * fix: memory-usage optimizations and multiple-pane-single-instance-plugins (https://github.com/zellij-org/zellij/pull/5662)
 * fix: erasing wide CJK character correctness (https://github.com/zellij-org/zellij/pull/5657)
 
