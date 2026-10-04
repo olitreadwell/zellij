@@ -686,7 +686,7 @@ lazy_static! {
 #[ignore]
 pub fn load_new_plugin_from_hd() {
     // here we load our fixture plugin into the plugin thread, and then send it an update message
-    // expecting tha thte plugin will log the received event and render it later after the update
+    // expecting that the plugin will log the received event and render it later after the update
     // message (this is what the fixture plugin does)
     // we then listen on our mock screen receiver to make sure we got a PluginBytes instruction
     // that contains said render, and assert against it
@@ -771,7 +771,7 @@ pub fn load_new_plugin_from_hd() {
 #[ignore]
 pub fn load_new_plugin_with_plugin_alias() {
     // here we load our fixture plugin into the plugin thread, and then send it an update message
-    // expecting tha thte plugin will log the received event and render it later after the update
+    // expecting that the plugin will log the received event and render it later after the update
     // message (this is what the fixture plugin does)
     // we then listen on our mock screen receiver to make sure we got a PluginBytes instruction
     // that contains said render, and assert against it
@@ -1728,7 +1728,7 @@ pub fn resize_focused_pane_with_direction_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('g'))), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('g'))), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -1804,7 +1804,7 @@ pub fn focus_next_pane_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('h'))), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('h'))), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -1880,7 +1880,7 @@ pub fn focus_previous_pane_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('i'))), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('i'))), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -1960,7 +1960,7 @@ pub fn focus_last_pane_plugin_command() {
             KeyWithModifier::new(BareKey::Char('l'))
                 .with_alt_modifier()
                 .with_ctrl_modifier(),
-        ), // this triggers the enent in the fixture plugin
+        ), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -2036,7 +2036,7 @@ pub fn move_focus_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('j'))), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('j'))), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -2112,7 +2112,7 @@ pub fn move_focus_or_tab_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('k'))), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('k'))), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -2188,7 +2188,7 @@ pub fn edit_scrollback_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('m'))), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('m'))), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -2264,7 +2264,7 @@ pub fn write_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('n'))), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('n'))), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -2340,7 +2340,7 @@ pub fn write_chars_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('o'))), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('o'))), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -2416,7 +2416,7 @@ pub fn toggle_tab_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('p'))), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('p'))), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -2492,7 +2492,7 @@ pub fn move_pane_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('q'))), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('q'))), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -2568,7 +2568,7 @@ pub fn move_pane_with_direction_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('r'))), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('r'))), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -2645,7 +2645,7 @@ pub fn clear_screen_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('s'))), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('s'))), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -2722,7 +2722,7 @@ pub fn scroll_up_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('t'))), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('t'))), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -2798,7 +2798,7 @@ pub fn scroll_down_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('u'))), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('u'))), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -2874,7 +2874,7 @@ pub fn scroll_to_top_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('v'))), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('v'))), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -2950,7 +2950,7 @@ pub fn scroll_to_bottom_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('w'))), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('w'))), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -3026,7 +3026,7 @@ pub fn page_scroll_up_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('x'))), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('x'))), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -3102,7 +3102,7 @@ pub fn page_scroll_down_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('y'))), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('y'))), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -3178,7 +3178,7 @@ pub fn toggle_focus_fullscreen_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('z'))), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('z'))), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -3254,7 +3254,7 @@ pub fn toggle_pane_frames_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('1'))), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('1'))), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -3330,7 +3330,7 @@ pub fn toggle_pane_embed_or_eject_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('2'))), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('2'))), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -3638,7 +3638,7 @@ pub fn undo_rename_pane_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('3'))), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('3'))), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -3714,7 +3714,7 @@ pub fn close_focus_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('4'))), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('4'))), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -3790,7 +3790,7 @@ pub fn toggle_active_tab_sync_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('5'))), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('5'))), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -3866,7 +3866,7 @@ pub fn close_focused_tab_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('6'))), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('6'))), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -3942,7 +3942,7 @@ pub fn undo_rename_tab_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('7'))), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('7'))), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -4018,7 +4018,7 @@ pub fn previous_swap_layout_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('a')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('a')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -4094,7 +4094,7 @@ pub fn next_swap_layout_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('b')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('b')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -4170,7 +4170,7 @@ pub fn go_to_tab_name_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('c')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('c')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -4246,7 +4246,7 @@ pub fn focus_or_create_tab_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('d')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('d')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -4322,7 +4322,7 @@ pub fn go_to_tab() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('e')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('e')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -4398,7 +4398,7 @@ pub fn start_or_reload_plugin() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('f')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('f')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -4481,7 +4481,7 @@ pub fn quit_zellij_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('8'))), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('8'))), // this triggers the event in the fixture plugin
     )]));
     server_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -4564,7 +4564,7 @@ pub fn detach_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('l'))), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('l'))), // this triggers the event in the fixture plugin
     )]));
     server_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -4647,7 +4647,7 @@ pub fn open_file_floating_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('h')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('h')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     pty_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -4734,7 +4734,7 @@ pub fn open_file_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('g')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('g')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     pty_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -4822,7 +4822,7 @@ pub fn open_file_with_line_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('i')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('i')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     pty_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -4909,7 +4909,7 @@ pub fn open_file_with_line_floating_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('j')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('j')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     pty_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -4996,7 +4996,7 @@ pub fn open_terminal_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('k')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('k')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     pty_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -5079,7 +5079,7 @@ pub fn open_terminal_floating_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('l')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('l')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     pty_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -5162,7 +5162,7 @@ pub fn open_command_pane_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('m')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('m')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     pty_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -5245,7 +5245,7 @@ pub fn open_command_pane_floating_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('n')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('n')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     pty_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -5321,7 +5321,7 @@ pub fn switch_to_tab_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('o')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('o')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -5397,7 +5397,7 @@ pub fn hide_self_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('p')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('p')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -5472,7 +5472,7 @@ pub fn show_self_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('q')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('q')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -5548,7 +5548,7 @@ pub fn close_terminal_pane_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('r')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('r')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -5624,7 +5624,7 @@ pub fn close_plugin_pane_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('s')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('s')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -5700,7 +5700,7 @@ pub fn focus_terminal_pane_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('t')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('t')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -5776,7 +5776,7 @@ pub fn focus_plugin_pane_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('u')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('u')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -5852,7 +5852,7 @@ pub fn rename_terminal_pane_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('v')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('v')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -5928,7 +5928,7 @@ pub fn rename_plugin_pane_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('w')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('w')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -6004,7 +6004,7 @@ pub fn rename_tab_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('x')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('x')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -6089,7 +6089,7 @@ pub fn send_configuration_to_plugins() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('z')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('z')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -6162,7 +6162,7 @@ pub fn request_plugin_permissions() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('1')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('1')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -6259,7 +6259,7 @@ pub fn granted_permission_request_result() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('1')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('1')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap();
     teardown();
@@ -6355,7 +6355,7 @@ pub fn denied_permission_request_result() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('1')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('1')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap();
     teardown();
@@ -6431,7 +6431,7 @@ pub fn run_command_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('2')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('2')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     background_jobs_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -6514,7 +6514,7 @@ pub fn run_command_with_env_vars_and_cwd_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('3')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('3')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     background_jobs_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -6597,7 +6597,7 @@ pub fn web_request_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('4')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('4')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     background_jobs_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -7043,7 +7043,7 @@ pub fn switch_session_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('5')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('5')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     std::thread::sleep(std::time::Duration::from_millis(500));
     teardown();
@@ -7132,7 +7132,7 @@ pub fn switch_session_with_layout_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('7')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('7')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     std::thread::sleep(std::time::Duration::from_millis(500));
     teardown();
@@ -7221,7 +7221,7 @@ pub fn switch_session_with_layout_and_cwd_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('9')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('9')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     std::thread::sleep(std::time::Duration::from_millis(500));
     teardown();
@@ -7307,7 +7307,7 @@ pub fn disconnect_other_clients_plugins_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('6')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('6')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     std::thread::sleep(std::time::Duration::from_millis(500));
     teardown();
@@ -7393,7 +7393,7 @@ pub fn reconfigure_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('0')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('0')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     std::thread::sleep(std::time::Duration::from_millis(500));
     teardown();
@@ -7483,13 +7483,13 @@ pub fn run_plugin_in_specific_cwd() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('8')).with_ctrl_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('8')).with_ctrl_modifier()), // this triggers the event in the fixture plugin
     )]));
     std::thread::sleep(std::time::Duration::from_millis(500));
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('8'))), // this sends this quit command so tha the test exits cleanly
+        Event::Key(KeyWithModifier::new(BareKey::Char('8'))), // this sends this quit command so that the test exits cleanly
     )]));
     teardown();
     server_thread.join().unwrap(); // this might take a while if the cache is cold
@@ -7561,7 +7561,7 @@ pub fn hide_pane_with_id_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('a')).with_alt_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('a')).with_alt_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -7637,7 +7637,7 @@ pub fn show_pane_with_id_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('b')).with_alt_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('b')).with_alt_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -7720,7 +7720,7 @@ pub fn open_command_pane_background_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('c')).with_alt_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('c')).with_alt_modifier()), // this triggers the event in the fixture plugin
     )]));
     pty_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -7800,7 +7800,7 @@ pub fn rerun_command_pane_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('d')).with_alt_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('d')).with_alt_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -7876,7 +7876,7 @@ pub fn resize_pane_with_id_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('e')).with_alt_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('e')).with_alt_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -7952,7 +7952,7 @@ pub fn edit_scrollback_for_pane_with_id_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('f')).with_alt_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('f')).with_alt_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -8028,7 +8028,7 @@ pub fn write_to_pane_id_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('g')).with_alt_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('g')).with_alt_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -8104,7 +8104,7 @@ pub fn write_chars_to_pane_id_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('h')).with_alt_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('h')).with_alt_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -8180,7 +8180,7 @@ pub fn move_pane_with_pane_id_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('i')).with_alt_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('i')).with_alt_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -8256,7 +8256,7 @@ pub fn move_pane_with_pane_id_in_direction_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('j')).with_alt_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('j')).with_alt_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -8332,7 +8332,7 @@ pub fn clear_screen_for_pane_id_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('k')).with_alt_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('k')).with_alt_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -8408,7 +8408,7 @@ pub fn scroll_up_in_pane_id_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('l')).with_alt_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('l')).with_alt_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -8484,7 +8484,7 @@ pub fn scroll_down_in_pane_id_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('m')).with_alt_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('m')).with_alt_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -8560,7 +8560,7 @@ pub fn scroll_to_top_in_pane_id_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('n')).with_alt_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('n')).with_alt_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -8636,7 +8636,7 @@ pub fn scroll_to_bottom_in_pane_id_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('o')).with_alt_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('o')).with_alt_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -8712,7 +8712,7 @@ pub fn page_scroll_up_in_pane_id_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('p')).with_alt_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('p')).with_alt_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -8788,7 +8788,7 @@ pub fn page_scroll_down_in_pane_id_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('q')).with_alt_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('q')).with_alt_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -8864,7 +8864,7 @@ pub fn toggle_pane_id_fullscreen_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('r')).with_alt_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('r')).with_alt_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -8940,7 +8940,7 @@ pub fn toggle_pane_embed_or_eject_for_pane_id_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('s')).with_alt_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('s')).with_alt_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -9016,7 +9016,7 @@ pub fn close_tab_with_index_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('t')).with_alt_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('t')).with_alt_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -9092,7 +9092,7 @@ pub fn break_panes_to_new_tab_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('u')).with_alt_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('u')).with_alt_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -9168,7 +9168,7 @@ pub fn break_panes_to_tab_with_index_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('v')).with_alt_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('v')).with_alt_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -9244,7 +9244,7 @@ pub fn reload_plugin_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('w')).with_alt_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('w')).with_alt_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -9320,7 +9320,7 @@ pub fn load_new_plugin_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('x')).with_alt_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('x')).with_alt_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();
@@ -9404,7 +9404,7 @@ pub fn rebind_keys_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('y')).with_alt_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('y')).with_alt_modifier()), // this triggers the event in the fixture plugin
     )]));
     std::thread::sleep(std::time::Duration::from_millis(500));
     teardown();
@@ -9482,7 +9482,7 @@ pub fn list_clients_plugin_command() {
     let _ = plugin_thread_sender.send(PluginInstruction::Update(vec![(
         None,
         Some(client_id),
-        Event::Key(KeyWithModifier::new(BareKey::Char('z')).with_alt_modifier()), // this triggers the enent in the fixture plugin
+        Event::Key(KeyWithModifier::new(BareKey::Char('z')).with_alt_modifier()), // this triggers the event in the fixture plugin
     )]));
     screen_thread.join().unwrap(); // this might take a while if the cache is cold
     teardown();

@@ -988,11 +988,11 @@ pub fn render_first_run_banner(
             let waiting_to_run_text = "Waiting to run: ";
             let command_text = run_command.to_string();
             let waiting_to_run_text_width = waiting_to_run_text.width() + command_text.width();
-            let column_start_postion = middle_column.saturating_sub(waiting_to_run_text_width / 2);
+            let column_start_position = middle_column.saturating_sub(waiting_to_run_text_width / 2);
             let waiting_to_run_line = format!(
                 "\u{1b}[{};{}H{}{}{}{}{}",
                 middle_row,
-                column_start_postion,
+                column_start_position,
                 bold_text,
                 waiting_to_run_text,
                 command_color_text,
@@ -1047,11 +1047,11 @@ pub fn render_first_run_banner(
         None => {
             let bare_text = format!("Waiting to start...");
             let bare_text_width = bare_text.width();
-            let column_start_postion = middle_column.saturating_sub(bare_text_width / 2);
+            let column_start_position = middle_column.saturating_sub(bare_text_width / 2);
             let bold_text = RESET_STYLES.bold(Some(AnsiCode::On));
             let waiting_to_run_line = format!(
                 "\u{1b}[?25l\u{1b}[{};{}H{}{}{}",
-                middle_row, column_start_postion, bold_text, bare_text, RESET_STYLES
+                middle_row, column_start_position, bold_text, bare_text, RESET_STYLES
             );
 
             let controls_bare_text_first_part = "<";

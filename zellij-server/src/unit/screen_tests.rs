@@ -714,7 +714,7 @@ impl MockScreen {
         }
     }
     pub fn clone_session_metadata(&self) -> SessionMetaData {
-        // hack that only clones the clonable parts of SessionMetaData
+        // hack that only clones the cloneable parts of SessionMetaData
         SessionMetaData {
             senders: self.session_metadata.senders.clone(),
             default_shell: self.session_metadata.default_shell.clone(),

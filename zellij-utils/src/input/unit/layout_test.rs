@@ -1598,7 +1598,7 @@ fn error_on_bare_close_on_exit_in_template_without_command() {
 }
 
 #[test]
-fn pane_template_command_with_cwd_overriden_by_its_consumers_command_cwd() {
+fn pane_template_command_with_cwd_overridden_by_its_consumers_command_cwd() {
     let kdl_layout = r#"
         layout {
             cwd "/tmp"
@@ -1634,7 +1634,7 @@ fn pane_template_command_with_cwd_remains_when_its_consumer_command_does_not_hav
 }
 
 #[test]
-fn pane_template_command_without_cwd_is_overriden_by_its_consumers_cwd() {
+fn pane_template_command_without_cwd_is_overridden_by_its_consumers_cwd() {
     let kdl_layout = r#"
         layout {
             cwd "/tmp"
@@ -1652,7 +1652,7 @@ fn pane_template_command_without_cwd_is_overriden_by_its_consumers_cwd() {
 }
 
 #[test]
-fn pane_template_command_with_cwd_is_overriden_by_its_consumers_bare_cwd() {
+fn pane_template_command_with_cwd_is_overridden_by_its_consumers_bare_cwd() {
     let kdl_layout = r#"
         layout {
             cwd "/tmp"
@@ -1689,7 +1689,7 @@ fn pane_template_command_without_cwd_receives_its_consumers_bare_cwd() {
 }
 
 #[test]
-fn pane_template_with_bare_cwd_overriden_by_its_consumers_bare_cwd() {
+fn pane_template_with_bare_cwd_overridden_by_its_consumers_bare_cwd() {
     let kdl_layout = r#"
         layout {
             cwd "/tmp"
