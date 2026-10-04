@@ -338,13 +338,13 @@ impl<'a> PaneContentsAndUi<'a> {
             .filter(|&&c_id| c_id != client_id)
             .copied()
             .collect();
-        let pane_focused_for_differet_client = !other_focused_clients.is_empty();
+        let pane_focused_for_different_client = !other_focused_clients.is_empty();
 
         let frame_color = self.frame_color(client_id, client_mode, session_is_mirrored);
         let highlight_tooltip = self.pane.cached_hover_tooltip();
         let focused_client = if pane_focused_for_client_id {
             Some(client_id)
-        } else if pane_focused_for_differet_client {
+        } else if pane_focused_for_different_client {
             Some(*other_focused_clients.first().with_context(err_context)?)
         } else {
             None

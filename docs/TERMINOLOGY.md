@@ -4,7 +4,7 @@ For example `[31mHi [5mthere!` would print the word "Hi" in red and then the wor
 
 `echo -e "\033[31mHi \033[5mthere!"` (`\033` is an escape character).
 
-## CSI (Control Sequence Identifier)
+## CSI (Control Sequence Introducer)
 Part of the ANSI/VT specification that includes instructions for the terminal emulator. These instructions can be a style change (eg. change color to red) or cursor position change (eg. go to line x/y).
 
 ## OSC (Operating System Command)

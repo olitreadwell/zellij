@@ -467,7 +467,7 @@ pub fn open_file_in_place(
     OpenFileInPlaceResponse::try_from(response).unwrap()
 }
 
-/// Open a file in the user's default `$EDITOR` in a new pane near th eplugin
+/// Open a file in the user's default `$EDITOR` in a new pane near the plugin
 pub fn open_file_near_plugin(
     file_to_open: FileToOpen,
     context: BTreeMap<String, String>,

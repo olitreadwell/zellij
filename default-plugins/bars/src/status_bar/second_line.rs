@@ -416,11 +416,11 @@ pub fn fullscreen_panes_to_hide(palette: &Styling, panes_to_hide: usize) -> Line
     let shortcut_left_separator = Style::new().fg(text_color).bold().paint(" (");
     let shortcut_right_separator = Style::new().fg(text_color).bold().paint("): ");
     let fullscreen = "FULLSCREEN";
-    let puls = "+ ";
+    let plus = "+ ";
     let panes = panes_to_hide.to_string();
     let hide = " hidden panes";
     let len = fullscreen.chars().count()
-        + puls.chars().count()
+        + plus.chars().count()
         + panes.chars().count()
         + hide.chars().count()
         + 5;
@@ -430,7 +430,7 @@ pub fn fullscreen_panes_to_hide(palette: &Styling, panes_to_hide: usize) -> Line
             shortcut_left_separator,
             Style::new().fg(orange_color).bold().paint(fullscreen),
             shortcut_right_separator,
-            Style::new().fg(text_color).bold().paint(puls),
+            Style::new().fg(text_color).bold().paint(plus),
             Style::new().fg(green_color).bold().paint(panes),
             Style::new().fg(text_color).bold().paint(hide)
         ),
@@ -508,12 +508,12 @@ pub fn locked_fullscreen_panes_to_hide(palette: &Styling, panes_to_hide: usize) 
     let shortcut_left_separator = Style::new().fg(text_color).bold().paint(" (");
     let shortcut_right_separator = Style::new().fg(text_color).bold().paint("): ");
     let fullscreen = "FULLSCREEN";
-    let puls = "+ ";
+    let plus = "+ ";
     let panes = panes_to_hide.to_string();
     let hide = " hidden panes";
     let len = locked_text.chars().count()
         + fullscreen.chars().count()
-        + puls.chars().count()
+        + plus.chars().count()
         + panes.chars().count()
         + hide.chars().count()
         + 5;
@@ -524,7 +524,7 @@ pub fn locked_fullscreen_panes_to_hide(palette: &Styling, panes_to_hide: usize) 
             shortcut_left_separator,
             Style::new().fg(orange_color).bold().paint(fullscreen),
             shortcut_right_separator,
-            Style::new().fg(text_color).bold().paint(puls),
+            Style::new().fg(text_color).bold().paint(plus),
             Style::new().fg(green_color).bold().paint(panes),
             Style::new().fg(text_color).bold().paint(hide)
         ),

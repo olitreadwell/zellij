@@ -991,8 +991,8 @@ fn get_splits(geoms: &Vec<PaneLayoutManifest>) -> Option<(SplitDirection, Vec<us
     }
 }
 
-/// Returns a vector containing the abscisse (x) of the cols that split the
-/// domain including the boundaries, ie the min and max abscisse values.
+/// Returns a vector containing the abscissa (x) of the cols that split the
+/// domain including the boundaries, ie the min and max abscissa values.
 fn get_col_splits(
     geoms: &Vec<PaneLayoutManifest>,
     (_, x_max): &(usize, usize),
@@ -1033,7 +1033,7 @@ fn get_row_splits(
     sorted_geoms.sort_by_key(|g| g.geom.y);
 
     //  here we make sure the various panes in all the stacks aren't counted as splits, since
-    //  stacked panes must always stay togethyer - we group them into one "geom" for the purposes
+    //  stacked panes must always stay together - we group them into one "geom" for the purposes
     //  of figuring out their splits
     let mut stack_geoms: HashMap<usize, Vec<PaneLayoutManifest>> = HashMap::new();
     let mut all_geoms = vec![];

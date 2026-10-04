@@ -1925,9 +1925,9 @@ impl<'a> KdlLayoutParser<'a> {
         // dependencies
         while !pane_template_dependency_tree.is_empty() {
             let mut candidates: Vec<&str> = vec![];
-            for (pane_tempalte, dependencies) in pane_template_dependency_tree.iter() {
+            for (pane_template, dependencies) in pane_template_dependency_tree.iter() {
                 if dependencies.is_empty() {
-                    candidates.push(pane_tempalte);
+                    candidates.push(pane_template);
                 }
             }
             if candidates.is_empty() {
@@ -1939,7 +1939,7 @@ impl<'a> KdlLayoutParser<'a> {
             }
             for candidate_to_remove in candidates {
                 pane_template_dependency_tree.remove(candidate_to_remove);
-                for (_pane_tempalte, dependencies) in pane_template_dependency_tree.iter_mut() {
+                for (_pane_template, dependencies) in pane_template_dependency_tree.iter_mut() {
                     dependencies.remove(candidate_to_remove);
                 }
                 pane_template_names_to_parse.push(candidate_to_remove);

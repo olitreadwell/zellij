@@ -804,7 +804,7 @@ impl TryFrom<ProtobufPluginCommand> for PluginCommand {
                                 context,
                             ))
                         },
-                        None => Err("Malformed open open command pane payload"),
+                        None => Err("Malformed open command pane payload"),
                     }
                 },
                 _ => Err("Mismatched payload for OpenCommandPane"),
