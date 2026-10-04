@@ -306,7 +306,7 @@ impl RemoteTerminal {
     pub fn current_snapshot(&self) -> String {
         // convenience method for writing tests,
         // this should only be used when developing,
-        // please prefer "snapsht_contains" instead
+        // please prefer "snapshot_contains" instead
         self.last_snapshot.lock().unwrap().clone()
     }
     #[allow(unused)]

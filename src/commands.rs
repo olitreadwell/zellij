@@ -646,7 +646,7 @@ pub(crate) fn start_client(opts: CliArgs) {
             // this is integration code to make session reconnects work with this existing,
             // untested and pretty involved function
             //
-            // ideally, we should write tests for this whole function and refctor it
+            // ideally, we should write tests for this whole function and refactor it
             reload_config_from_disk(
                 &mut config_without_layout,
                 &mut config_options_without_layout,
