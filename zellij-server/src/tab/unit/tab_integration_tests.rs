@@ -4276,7 +4276,7 @@ fn resize_whole_tab_while_tiled_pane_is_suppressed() {
 }
 
 #[test]
-fn resize_whole_tab_while_floting_pane_is_suppressed() {
+fn resize_whole_tab_while_floating_pane_is_suppressed() {
     let size = Size {
         cols: 121,
         rows: 20,
@@ -8764,7 +8764,7 @@ fn stacked_panes_can_become_fullscreen() {
 }
 
 #[test]
-fn layout_with_plugins_and_commands_swaped_properly() {
+fn layout_with_plugins_and_commands_swapped_properly() {
     let size = Size {
         cols: 121,
         rows: 20,
@@ -9814,7 +9814,7 @@ fn when_closing_a_pane_in_auto_layout_the_focus_goes_to_last_focused_pane() {
 }
 
 #[test]
-fn floating_layout_with_plugins_and_commands_swaped_properly() {
+fn floating_layout_with_plugins_and_commands_swapped_properly() {
     let size = Size {
         cols: 121,
         rows: 20,
