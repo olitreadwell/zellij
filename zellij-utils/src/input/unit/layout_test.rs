@@ -1,5 +1,6 @@
 use super::super::layout::*;
 use insta::assert_snapshot;
+use std::collections::BTreeMap;
 
 #[cfg(not(windows))]
 fn normalize_layout_debug(s: String) -> String {
@@ -2575,4 +2576,118 @@ fn tiled_pane_still_rejects_zero_percent() {
     // But 1% should work
     let result = SplitSize::from_str("1%");
     assert!(result.is_ok());
+}
+
+#[test]
+fn file_layout_with_non_kdl_extension_loads_from_path() {
+    use crate::data::{LayoutInfo, LayoutMetadata};
+
+    // Regression test for https://github.com/zellij-org/zellij/issues/4994
+    // `--layout path/to/layout.zellij` (any non-.kdl extension) was silently
+    // ignored when starting a session: the path was routed through the layout
+    // directory lookup, which forced the extension to `.kdl` and fell back to
+    // the default layout when that file did not exist. A resolved file path must
+    // be loaded as-is.
+    let tmp_dir = std::env::temp_dir().join(format!("zellij-layout-ext-{}", std::process::id()));
+    std::fs::create_dir_all(&tmp_dir).unwrap();
+    let layout_file = tmp_dir.join("my.layout");
+    std::fs::write(&layout_file, "layout {\n    pane command=\"pwd\"\n}\n").unwrap();
+
+    let layout_info = LayoutInfo::File(
+        layout_file.display().to_string(),
+        LayoutMetadata::from(&layout_file),
+    );
+    let (layout, _config) =
+        Layout::from_layout_info_with_config(&Some(tmp_dir.clone()), &layout_info, None).unwrap();
+    let pane_count = layout.template.unwrap().0.children.len();
+
+    std::fs::remove_dir_all(&tmp_dir).ok();
+
+    assert_eq!(pane_count, 1);
+}
+
+#[test]
+fn bare_layout_name_in_layout_dir_still_loads() {
+    use crate::data::{LayoutInfo, LayoutMetadata};
+
+    // A bare layout name (from the layout-switcher list) must keep resolving via
+    // the layout directory even after the file-path fix above.
+    let tmp_dir = std::env::temp_dir().join(format!("zellij-layout-bare-{}", std::process::id()));
+    std::fs::create_dir_all(&tmp_dir).unwrap();
+    let layout_file = tmp_dir.join("compact.kdl");
+    std::fs::write(&layout_file, "layout {\n    pane command=\"pwd\"\n}\n").unwrap();
+
+    let layout_info = LayoutInfo::File("compact".to_string(), LayoutMetadata::from(&layout_file));
+    let (layout, _config) =
+        Layout::from_layout_info_with_config(&Some(tmp_dir.clone()), &layout_info, None).unwrap();
+    let pane_count = layout.template.unwrap().0.children.len();
+
+    std::fs::remove_dir_all(&tmp_dir).ok();
+
+    assert_eq!(pane_count, 1);
+}
+
+fn plugin_alias_with_configuration(name: &str, configuration: &[(&str, &str)]) -> RunPluginOrAlias {
+    let configuration: BTreeMap<String, String> = configuration
+        .iter()
+        .map(|(key, value)| (key.to_string(), value.to_string()))
+        .collect();
+    RunPluginOrAlias::Alias(PluginAlias::new(name, &Some(configuration), None))
+}
+
+fn running_plugin_alias(name: &str, configuration: &[(&str, &str)]) -> Option<Run> {
+    Some(Run::Plugin(plugin_alias_with_configuration(
+        name,
+        configuration,
+    )))
+}
+
+#[test]
+fn plugin_alias_with_configuration_is_equivalent_to_running_alias_with_caller_cwd() {
+    let requested = plugin_alias_with_configuration("session-manager", &[("ignore_case", "true")]);
+    let running = running_plugin_alias(
+        "session-manager",
+        &[("ignore_case", "true"), ("caller_cwd", "/some/folder")],
+    );
+    assert!(requested.is_equivalent_to_run(&running));
+}
+
+#[test]
+fn plugin_alias_with_different_configuration_is_not_equivalent_to_running_alias() {
+    let requested = plugin_alias_with_configuration("session-manager", &[("ignore_case", "true")]);
+    let running = running_plugin_alias(
+        "session-manager",
+        &[("ignore_case", "false"), ("caller_cwd", "/some/folder")],
+    );
+    assert!(!requested.is_equivalent_to_run(&running));
+}
+
+#[test]
+fn plugin_alias_without_configuration_is_equivalent_to_running_alias_with_only_caller_cwd() {
+    let requested = RunPluginOrAlias::Alias(PluginAlias::new("session-manager", &None, None));
+    let running = running_plugin_alias("session-manager", &[("caller_cwd", "/some/folder")]);
+    assert!(requested.is_equivalent_to_run(&running));
+}
+
+#[test]
+fn plugin_alias_with_its_own_caller_cwd_is_equivalent_to_running_alias_with_another_caller_cwd() {
+    let requested = plugin_alias_with_configuration(
+        "filepicker",
+        &[("ignore_case", "true"), ("caller_cwd", "/first/folder")],
+    );
+    let running = running_plugin_alias(
+        "filepicker",
+        &[("ignore_case", "true"), ("caller_cwd", "/second/folder")],
+    );
+    assert!(requested.is_equivalent_to_run(&running));
+}
+
+#[test]
+fn plugin_aliases_with_different_names_are_not_equivalent() {
+    let requested = plugin_alias_with_configuration("session-manager", &[("ignore_case", "true")]);
+    let running = running_plugin_alias(
+        "filepicker",
+        &[("ignore_case", "true"), ("caller_cwd", "/some/folder")],
+    );
+    assert!(!requested.is_equivalent_to_run(&running));
 }
