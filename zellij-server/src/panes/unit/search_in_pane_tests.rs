@@ -264,7 +264,7 @@ pub fn searching_inside_and_scroll() {
         format!("{:?}", terminal_pane.grid)
     );
 
-    // Scrolling up until a the active marker goes out of view
+    // Scrolling up until the active marker goes out of view
     terminal_pane.scroll_up(5, fake_client_id);
     assert_eq!(terminal_pane.grid.search_results.active, None);
 

@@ -2218,7 +2218,7 @@ fn route_action_with_origin(
             ..
         } => {
             drop(completion_tx); // releasing pipes is handled by the plugins, so we don't want
-                                 // this to block additionallu
+                                 // this to block additionally
             if let Some(seen_cli_pipes) = seen_cli_pipes.as_mut() {
                 if !seen_cli_pipes.contains(&pipe_id) {
                     seen_cli_pipes.insert(pipe_id.clone());

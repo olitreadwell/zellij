@@ -16,7 +16,7 @@ The best way to extend the Zellij functionality is through plugins. If you have 
 # General description
 <!-- I would like to be able to … -->
 
-# Uses cases
+# Use cases
 <!-- 1. With a keybinding I would like to … -->
 
 <!-- 2. Invoked from a pipe it will … -->

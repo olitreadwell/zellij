@@ -133,7 +133,7 @@ let my_variable = some_function();
 log::info!("my variable is: {:?}", my_variable);
 ```
 
-Note that the output is truncated at 100KB. This can be adjusted for the purposes of debugging through the `LOG_MAX_BYTES` constant, at the time of writing here: https://github.com/zellij-org/zellij/blob/main/zellij-utils/src/logging.rs#L24
+Note that the output is truncated at 16MB. This can be adjusted for the purposes of debugging through the `LOG_MAX_BYTES` constant, at the time of writing here: https://github.com/zellij-org/zellij/blob/main/zellij-utils/src/logging.rs#L23
 
 When running Zellij with the `--debug` flag, Zellij will dump a copy of all bytes received over the pty for each pane in: `/$temp_dir/zellij-<UID>/zellij-log/zellij-<pane_id>.log`. These might be useful when troubleshooting terminal issues.
 
@@ -217,7 +217,7 @@ https://github.com/zellij-org/zellij/issues/new?assignees=&labels=plugin%20syste
 ### How Do I Submit A (Good) Bug Report?
 
 After you've determined which repository your bug is related to and that the
-issue is still present in the latest version of the master branch, create an
+issue is still present in the latest version of the main branch, create an
 issue on that repository and provide the following information:
 
 - Use a **clear and descriptive title** for the issue to identify the problem.

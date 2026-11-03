@@ -2075,7 +2075,7 @@ impl Pty {
                     run_command.originating_plugin = Some(originating_plugins.clone());
                 }
                 let _ = self.task_handles.remove(&id); // if all is well, this shouldn't be here
-                let _ = self.id_to_child_pid.remove(&id); // if all is wlel, this shouldn't be here
+                let _ = self.id_to_child_pid.remove(&id); // if all is well, this shouldn't be here
 
                 let hold_on_close = run_command.hold_on_close;
                 let command_text = run_command.to_string();

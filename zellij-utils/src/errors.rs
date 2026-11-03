@@ -63,7 +63,7 @@ pub trait LoggableError<T>: Sized {
     #[track_caller]
     fn print_error<F: Fn(&str)>(self, fun: F) -> Self;
 
-    /// Convenienve function, calls `print_error` and logs the result as error.
+    /// Convenience function, calls `print_error` and logs the result as error.
     ///
     /// This is not a wrapper around `log::error!`, because the `log` crate uses a lot of compile
     /// time macros from `std` to determine caller locations/module names etc. Since these are
@@ -92,12 +92,12 @@ pub trait LoggableError<T>: Sized {
         })
     }
 
-    /// Convenienve function, calls `print_error` with the closure `|msg| eprintln!("{}", msg)`.
+    /// Convenience function, calls `print_error` with the closure `|msg| eprintln!("{}", msg)`.
     fn to_stderr(self) -> Self {
         self.print_error(|msg| eprintln!("{}", msg))
     }
 
-    /// Convenienve function, calls `print_error` with the closure `|msg| println!("{}", msg)`.
+    /// Convenience function, calls `print_error` with the closure `|msg| println!("{}", msg)`.
     fn to_stdout(self) -> Self {
         self.print_error(|msg| println!("{}", msg))
     }
@@ -165,7 +165,7 @@ impl<T> FatalError<T> for anyhow::Result<T> {
 /// Different types of calls that form an [`ErrorContext`] call stack.
 ///
 /// Complex variants store a variant of a related enum, whose variants can be built from
-/// the corresponding Zellij MSPC instruction enum variants ([`ScreenInstruction`],
+/// the corresponding Zellij MPSC instruction enum variants ([`ScreenInstruction`],
 /// [`PtyInstruction`], [`ClientInstruction`], etc).
 #[derive(Copy, Clone, PartialEq, Serialize, Deserialize, Debug)]
 pub enum ContextType {
