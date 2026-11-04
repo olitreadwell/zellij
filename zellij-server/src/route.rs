@@ -841,6 +841,22 @@ fn route_action_with_origin(
                 )))
                 .with_context(err_context)?;
         },
+        Action::ToggleStackListOrientation => {
+            senders
+                .send_to_screen(ScreenInstruction::ToggleStackListOrientation(
+                    client_id,
+                    Some(NotificationEnd::new(completion_tx)),
+                ))
+                .with_context(err_context)?;
+        },
+        Action::ToggleStackListOrientationByPaneId { pane_id } => {
+            senders
+                .send_to_screen(ScreenInstruction::ToggleStackListOrientationWithPaneId(
+                    pane_id.into(),
+                    Some(NotificationEnd::new(completion_tx)),
+                ))
+                .with_context(err_context)?;
+        },
         Action::SetPaneFrameStyle(pane_frame_style) => {
             senders
                 .send_to_screen(ScreenInstruction::SetPaneFrameStyle(
@@ -3055,9 +3071,7 @@ pub(crate) fn route_thread_main(
                                     s.live_view_captures
                                         .lock()
                                         .ok()?
-                                        .key_pressed(client_id, &key, || {
-                                            s.live_view_release_keys(&client_id)
-                                        })
+                                        .key_pressed(client_id, &key)
                                         .then(|| s.senders.clone())
                                 });
                             if let Some(senders) = live_view_release {
